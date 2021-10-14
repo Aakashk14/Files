@@ -1,0 +1,35 @@
+.about,.panel{
+    position: absolute;
+    top:1px;
+    width: 500px;
+    display: inline-block;
+    left:70%;
+}
+
+
+.about p,.panel p {
+    color: white;
+    cursor: pointer;
+}
+.panel p:hover,
+.about p:hover{
+    outline: 0;
+    text-decoration: underline;
+}
+.panel {
+    left:90%;
+}
+#logout{
+    position: fixed;
+    left:40px;
+    width: 60px;
+    left:240px;
+    top:0px;
+    color: white;
+    cursor: pointer;
+}
+#logout:hover{
+    outline: 0;
+    text-decoration: underline;
+    
+}
