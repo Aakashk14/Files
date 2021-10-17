@@ -2,6 +2,7 @@ const { render } = require('ejs');
 const express = require('express');
 const db = require('../db/queries');
 const path = require('path');
+const { EWOULDBLOCK } = require('constants');
 
 
 const router = express.Router();
@@ -38,6 +39,7 @@ router.post('/create',async(req,res)=>{
        if(result!=0){
            req.session.userid=req.body.email;
            req.session.myid=result[0].userid
+           req.session.name=result[0].name
            db.addkey(req.session.userid);
            res.redirect("/dashboard");
        }else{
@@ -48,7 +50,8 @@ router.post('/login',async(req,res,next)=>{
 
   let result= await db.check(req.body.email,req.body.password)
        if(result!=0){
-           req.session.myid=result;
+           req.session.myid=result.userid;
+           req.session.name=result.name;
            
            next()
        }else{
@@ -69,7 +72,7 @@ router.get('/dashboard',check,async(req,res)=>{
 
     req.session.key= await db.getkey(req.session.myid);
 
-    res.render("space.ejs");
+    res.render("space.ejs",{name:req.session.name});
 
 })
 

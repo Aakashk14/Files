@@ -48,7 +48,7 @@ function check(myemail,mypass){
     return new Promise((resolve,reject)=>{
         con.query("Select * from users where email=? and password=?",[myemail,mypass],(err,rows)=>{
             if(rows.length > 0){
-                resolve(rows[0].userid);
+                resolve(rows[0]);
             }else{
                 resolve(0);
             }
@@ -119,7 +119,7 @@ function access(userid,email){
                         if(err){
                             resolve(0)
                         }else{
-                        con.query("Select userid from users where email=?",[email],(err,rows)=>{
+                        con.query("Select userid name from users where email=?",[email],(err,rows)=>{
                             resolve(rows)
                         })
 

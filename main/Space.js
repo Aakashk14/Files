@@ -6,9 +6,9 @@ const db = require('../db/queries');
 router.get("/shared",async(req,res)=>{
 let result = await db.shared(req.session.myid)
     if(result!=0){
-        res.render("shared.ejs",{users:result});
+        res.render("shared.ejs",{users:result,name:req.session.name});
     }else{
-        res.render("shared.ejs");
+        res.render("shared.ejs",{name:req.session.name});
     }
 });
 
@@ -28,9 +28,9 @@ router.get("/users/:name",async(req,res)=>{
         if(result.length!=0){
             
         
-            res.render("sharedfiles.ejs",{files:result});
+            res.render("sharedfiles.ejs",{files:result,name:req.session.name});
         }else{
-    res.render("sharedfiles.ejs");
+    res.render("sharedfiles.ejs",{name:req.session.name});
 }
     })
 
@@ -41,9 +41,9 @@ router.get("/myfiles",async(req,res)=>{
 
     let result= await db.files(req.session.userid)
         if(result!=0){
-            res.render("files.ejs",{files:result});
+            res.render("files.ejs",{files:result,name:req.session.name});
         }else{
-            res.render("files.ejs");
+            res.render("files.ejs",{name:req.session.name});
         }
     })
 

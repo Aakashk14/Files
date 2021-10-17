@@ -22,9 +22,9 @@ router.get('/panel',async(req,res)=>{
 
     let data = await userslist(req.session.myid)
     if(data!=0){
-        res.render('panel.ejs',{users:data})
+        res.render('panel.ejs',{users:data,name:req.session.name})
     }else{
-        res.render('panel.ejs');
+        res.render('panel.ejs',{name:req.session.name});
     }
 })
 
