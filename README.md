@@ -4,6 +4,8 @@ Files Sharing app To Have your all files available to you all the time, easy to 
 
 >> added a mongodb_version folder inside db folder if you want to implement using mongodb
 
+Live demo http://admin:p123@filesproject.ap-1.evennode.com/
+
 
 ### Features
 
